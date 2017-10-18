@@ -156,6 +156,11 @@ export class Engine {
                         url: 'http://127.0.0.1:' + graphqlPort + endpoint,
                         headerSecret: this.middlewareParams.psk
                     }];
+                } else {
+                    childConfig.origins = childConfig.origins.map(origin => ({
+                        ...origin,
+                        headerSecret: this.middlewareParams.psk
+                    }));
                 }
 
                 let binaryPath = resolve(__dirname, '../node_modules', this.binary);
