@@ -29,44 +29,40 @@ export interface EngineConfig {
     logcfg?: {
         level: LogLevels
     },
-    stores?: [
-        {
-            name: string,
-            epoch?: number,
-            timeout?: string,
-            memcaches: [
-                {
-                    url: string
-                }
-            ]
-        }
-    ],
-    operations?: [
-        {
-            signature: string,
-            perSession?: boolean,
-            caches: [
-                {
-                    ttl: number,
-                    store: string
-                }
-            ]
-        }
-    ],
-    origins?: [
-        {
-            url: string,
-            requestTimeout?: string,
-            headerSecret: string,
-        }
-    ],
-    frontends?: [
-        {
-            host: string,
-            endpoint: string,
-            port: number,
-        }
-    ],
+    stores?: {
+        name: string,
+        epoch?: number,
+        timeout?: string,
+        memcaches: [
+            {
+                url: string
+            }
+        ]
+    }[]
+    ,
+    operations?: {
+        signature: string,
+        perSession?: boolean,
+        caches: [
+            {
+                ttl: number,
+                store: string
+            }
+        ]
+    }[]
+    ,
+    origins?: {
+        url: string,
+        requestTimeout?: string,
+        headerSecret: string,
+    }[]
+    ,
+    frontends?: {
+        host: string,
+        endpoint: string,
+        port: number,
+    }[]
+    ,
     sessionAuth?: {
         header: string,
         store?: string,
