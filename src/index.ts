@@ -155,14 +155,11 @@ export class Engine {
                     childConfig.frontends.push(frontend);
                 }
 
-                let origin = {
-                    url: 'http://127.0.0.1:' + graphqlPort + endpoint,
-                    headerSecret: this.middlewareParams.psk
-                };
                 if (typeof childConfig.origins === 'undefined') {
-                    childConfig.origins = [origin];
-                } else {
-                    childConfig.origins.push(origin)
+                    childConfig.origins = [{
+                        url: 'http://127.0.0.1:' + graphqlPort + endpoint,
+                        headerSecret: this.middlewareParams.psk
+                    }];
                 }
 
                 let binaryPath = resolve(__dirname, '../node_modules', this.binary);
